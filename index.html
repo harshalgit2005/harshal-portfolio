@@ -1,66 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Harshal Saudagar | AI & Data Analyst</title>
+
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome for social icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body { background: #0f172a; color: #e5e7eb; line-height: 1.6; }
-    a { color: #38bdf8; text-decoration: none; }
-    header { padding: 60px 10%; text-align: center; }
-    header h1 { font-size: 3rem; font-weight: 700; }
-    header h1 span { color: #38bdf8; }
-    header p { margin-top: 15px; font-size: 1.1rem; color: #cbd5f5; }
-    nav { margin-top: 25px; }
-    nav a { margin: 0 15px; font-weight: 500; }
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #0a0a23;
+      --primary-color: #38bdf8;
+      --card-bg: #ffffff;
+      --card-shadow: rgba(0,0,0,0.1);
+    }
+    [data-theme="dark"] {
+      --bg-color: #0f172a;
+      --text-color: #e5e7eb;
+      --primary-color: #38bdf8;
+      --card-bg: #020617;
+      --card-shadow: rgba(0,0,0,0.4);
+    }
 
-    section { padding: 80px 10%; }
-    .section-title { font-size: 2rem; margin-bottom: 30px; position: relative; }
-    .section-title::after { content: ''; width: 60px; height: 4px; background: #38bdf8; position: absolute; left: 0; bottom: -10px; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: all 0.3s ease;
+      scroll-behavior: smooth;
+    }
 
-    .about p { max-width: 900px; color: #d1d5db; }
+    header {
+      background: var(--primary-color);
+      color: #ffffff;
+      padding: 60px 10%;
+      text-align: center;
+      position: relative;
+    }
 
-    .skills-grid, .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
-    .card { background: #020617; padding: 25px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); transition: transform 0.3s; }
-    .card:hover { transform: translateY(-10px); }
+    header img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #ffffff;
+      margin-bottom: 20px;
+    }
 
-    .experience-item { margin-bottom: 30px; }
-    .experience-item h3 { color: #38bdf8; }
+    header h1 { font-size: 2.8rem; margin-bottom: 6px; }
+    header p { font-size: 1.1rem; margin-bottom: 16px; }
 
-    footer { background: #020617; padding: 40px 10%; text-align: center; }
-    footer p { color: #9ca3af; }
+    nav a {
+      margin: 0 12px;
+      font-weight: 600;
+      color: #ffffff;
+      text-decoration: none;
+    }
 
-    .btn { display: inline-block; margin-top: 20px; padding: 12px 30px; background: #38bdf8; color: #020617; border-radius: 30px; font-weight: 600; }
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 10px 26px;
+      background: #ffffff;
+      color: var(--primary-color);
+      border-radius: 24px;
+      font-weight: 600;
+      border: 2px solid #ffffff;
+      transition: 0.25s ease;
+    }
+    .hero-btn:hover {
+      background: #ffffff;
+      color: var(--text-color);
+      border-color: var(--primary-color);
+    }
+
+    section {
+      padding: 60px 10%;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+    section.visible { opacity: 1; transform: translateY(0); }
+
+    .section-title {
+      font-size: 1.9rem;
+      margin-bottom: 28px;
+      font-weight: 700;
+      color: var(--text-color);
+      text-align: center;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      width: 50px;
+      height: 4px;
+      background: var(--primary-color);
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -10px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+    .projects-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px var(--card-shadow);
+      padding: 18px;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 20px var(--card-shadow);
+    }
+    .card h3 { font-size: 1.25rem; color: var(--primary-color); margin-bottom: 6px; }
+    .card a { text-decoration: none; color: var(--primary-color); font-weight: 500; }
+
+    footer {
+      text-align: center;
+      padding: 28px 10%;
+      background: var(--card-bg);
+      color: var(--text-color);
+      font-size: 0.9rem;
+      position: relative;
+    }
+
+    /* Social icons fixed */
+    .social-icons {
+      position: fixed;
+      top: 40%;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: var(--card-bg);
+      padding: 12px 8px;
+      border-radius: 8px 0 0 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+    .social-icons a {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      transition: 0.3s ease;
+    }
+    .social-icons a:hover { transform: scale(1.2); }
+
+    /* Responsive */
+    @media (max-width: 768px){
+      header img { width: 120px; height: 120px; }
+      .social-icons { top: auto; bottom: 10px; flex-direction: row; right: 50%; transform: translateX(50%); border-radius: 12px; padding: 8px 12px;}
+      .social-icons a { font-size: 1.3rem; }
+    }
   </style>
 </head>
-<body>
+
+<body data-theme="light">
 
 <header>
-  <h1>Harshal <span>Saudagar</span></h1>
+  <img src="harshal_profile.jpg" alt="Harshal Saudagar">
+  <h1>Harshal Saudagar</h1>
   <p>AI & Data Analyst | Generative AI | Data-Driven Decision Making</p>
+
   <nav>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
     <a href="#experience">Experience</a>
+    <a href="#certificates">Certificates</a>
     <a href="#contact">Contact</a>
   </nav>
+
+  <span class="theme-toggle" onclick="toggleTheme()" title="Toggle Light/Dark">
+    <i class="fas fa-adjust"></i>
+  </span>
+  
+  <a class="hero-btn" href="Harshal_Saudagar_Resume.pdf" download>Download Resume</a>
 </header>
 
-<section id="about" class="about">
+<!-- Social Icons -->
+<div class="social-icons">
+  <a href="https://www.linkedin.com/in/harshal-saudagar-a03973290" target="_blank"><i class="fab fa-linkedin"></i></a>
+  <a href="https://github.com/harshalgit2005" target="_blank"><i class="fab fa-github"></i></a>
+  <a href="mailto:harshalsaudagar864@gmail.com"><i class="fas fa-envelope"></i></a>
+</div>
+
+<section id="about">
   <h2 class="section-title">About Me</h2>
-  <p>
-    I am an Information Technology undergraduate passionate about Data Analytics, Machine Learning, and Generative AI.
-    I enjoy solving real-world problems using data, building intelligent systems, and creating insights that drive
-    business decisions. I focus on ethical, scalable, and impactful AI solutions.
+  <p style="max-width: 760px; margin:auto; text-align:center;">
+    I am an IT undergraduate passionate about Data Analytics, Machine Learning, and Generative AI.
+    I build intelligent systems, insights, and predictive models that drive business decisions.
   </p>
 </section>
 
 <section id="skills">
   <h2 class="section-title">Skills</h2>
-  <div class="skills-grid">
+  <div class="grid projects-grid">
     <div class="card">Python, SQL, Pandas, NumPy</div>
     <div class="card">Machine Learning & Scikit-learn</div>
     <div class="card">Generative AI & RAG</div>
@@ -72,20 +229,20 @@
 
 <section id="projects">
   <h2 class="section-title">Projects</h2>
-  <div class="projects-grid">
+  <div class="grid projects-grid">
     <div class="card">
       <h3>Face Detection using OpenCV</h3>
-      <p>Built a real-time face detection system using Haar Cascade and DNN-based models.</p>
+      <p>Real-time face detection system using Haar Cascade & DNN.</p>
       <a href="https://github.com/harshalgit2005/computer-vision-techniques" target="_blank">View Project →</a>
     </div>
     <div class="card">
       <h3>RAG Chatbot</h3>
-      <p>Document-based AI assistant using Retrieval-Augmented Generation and Streamlit.</p>
+      <p>AI assistant built with Retrieval-Augmented Generation & Streamlit.</p>
       <a href="https://github.com/harshalgit2005/RAG-chatbot" target="_blank">View Project →</a>
     </div>
     <div class="card">
       <h3>Consumer Shopping Behavior Analysis</h3>
-      <p>Retail analytics project with Python, SQL, and Power BI dashboards.</p>
+      <p>Retail analytics with Python, SQL & Power BI dashboard.</p>
       <a href="https://github.com/harshalgit2005/Data-Analysis" target="_blank">View Project →</a>
     </div>
   </div>
@@ -93,29 +250,65 @@
 
 <section id="experience">
   <h2 class="section-title">Experience</h2>
-  <div class="experience-item">
-    <h3>AI Transformation Consultant (Simulation)</h3>
-    <p><strong>TATA Group – Forage</strong> | Jul 2025</p>
-    <p>Designed AI-driven analytics strategies, applied predictive modeling, and incorporated ethical AI principles.</p>
+  <div style="max-width: 780px; margin:auto;">
+    <div class="card">
+      <h3>AI Transformation Consultant (Simulation)</h3>
+      <p><strong>TATA Group – Forage</strong> | Jul 2025<br>
+      Designed AI-driven analytics solutions and predictive models with ethical standards.</p>
+    </div>
+    <div class="card">
+      <h3>Data Analyst Intern</h3>
+      <p><strong>YBI Foundation</strong> | Dec 2024 – Jan 2025<br>
+      Built dashboards, reports, ML models, and automated ETL workflows.</p>
+    </div>
   </div>
-  <div class="experience-item">
-    <h3>Data Analyst Intern</h3>
-    <p><strong>YBI Foundation</strong> | Dec 2024 – Jan 2025</p>
-    <p>Worked on large datasets, built Power BI dashboards, implemented ML models, and automated ETL workflows.</p>
+</section>
+
+<section id="certificates">
+  <h2 class="section-title">Certificates</h2>
+  <div class="grid projects-grid">
+    <div class="card">
+      <h3>Data Science with Python</h3>
+      <p><a href="certificate_datascience.pdf" download>Download Certificate →</a></p>
+    </div>
+    <div class="card">
+      <h3>Machine Learning Certification</h3>
+      <p><a href="certificate_ml.pdf" download>Download Certificate →</a></p>
+    </div>
   </div>
 </section>
 
 <section id="contact">
   <h2 class="section-title">Contact</h2>
-  <p>Email: harshalsaudagar864@gmail.com</p>
-  <p>LinkedIn: <a href="https://www.linkedin.com/in/harshal-saudagar-a03973290" target="_blank">View Profile</a></p>
-  <p>GitHub: <a href="https://github.com/harshalgit2005" target="_blank">View Repositories</a></p>
-  <a class="btn" href="#">Download Resume</a>
+  <p style="text-align:center;">
+    Email: <a href="mailto:harshalsaudagar864@gmail.com">harshalsaudagar864@gmail.com</a><br>
+    LinkedIn: <a href="https://www.linkedin.com/in/harshal-saudagar-a03973290" target="_blank">View Profile</a><br>
+    GitHub: <a href="https://github.com/harshalgit2005" target="_blank">View Repositories</a>
+  </p>
 </section>
 
 <footer>
-  <p>© 2026 Harshal Saudagar. Built with ❤️ & Data.</p>
+  © 2026 Harshal Saudagar — Built for Impact & Innovation
 </footer>
+
+<script>
+  // Light/Dark mode toggle
+  function toggleTheme() {
+    const html = document.body;
+    html.setAttribute('data-theme', html.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+  }
+
+  // Scroll animations
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {threshold: 0.2});
+  sections.forEach(section => observer.observe(section));
+</script>
 
 </body>
 </html>
