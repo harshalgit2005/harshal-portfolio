@@ -1,223 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Harshal Saudagar | AI & Data Analyst</title>
-
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- FontAwesome for social icons -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
   <style>
-    :root {
-      --bg-color: #ffffff;
-      --text-color: #0a0a23;
-      --primary-color: #38bdf8;
-      --card-bg: #ffffff;
-      --card-shadow: rgba(0,0,0,0.1);
-    }
-    [data-theme="dark"] {
-      --bg-color: #0f172a;
-      --text-color: #e5e7eb;
-      --primary-color: #38bdf8;
-      --card-bg: #020617;
-      --card-shadow: rgba(0,0,0,0.4);
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background: #0b1220; color: #e5e7eb; line-height: 1.6; overflow-x: hidden; }
+    a { color: #22d3ee; text-decoration: none; }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
-      transition: all 0.3s ease;
-      scroll-behavior: smooth;
-    }
-
+    /* ===== Gradient Header ===== */
     header {
-      background: var(--primary-color);
-      color: #ffffff;
-      padding: 60px 10%;
+      padding: 80px 10% 100px;
       text-align: center;
+      background: linear-gradient(135deg, #0ea5e9, #22d3ee, #6366f1);
       position: relative;
     }
 
-    header img {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #ffffff;
-      margin-bottom: 20px;
-    }
-
-    header h1 { font-size: 2.8rem; margin-bottom: 6px; }
-    header p { font-size: 1.1rem; margin-bottom: 16px; }
-
-    nav a {
-      margin: 0 12px;
-      font-weight: 600;
-      color: #ffffff;
-      text-decoration: none;
-    }
-
-    .theme-toggle {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      cursor: pointer;
-      font-size: 1.2rem;
-    }
-
-    .hero-btn {
+    /* ===== Animated Profile ===== */
+    .profile-wrapper {
       display: inline-block;
-      margin-top: 14px;
-      padding: 10px 26px;
-      background: #ffffff;
-      color: var(--primary-color);
-      border-radius: 24px;
-      font-weight: 600;
-      border: 2px solid #ffffff;
-      transition: 0.25s ease;
+      padding: 6px;
+      border-radius: 18px;
+      background: linear-gradient(270deg, #22d3ee, #6366f1, #22d3ee);
+      background-size: 400% 400%;
+      animation: borderGlow 6s ease infinite;
+      margin-bottom: 18px;
     }
-    .hero-btn:hover {
-      background: #ffffff;
-      color: var(--text-color);
-      border-color: var(--primary-color);
+    @keyframes borderGlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
-
-    section {
-      padding: 60px 10%;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
-    }
-    section.visible { opacity: 1; transform: translateY(0); }
-
-    .section-title {
-      font-size: 1.9rem;
-      margin-bottom: 28px;
-      font-weight: 700;
-      color: var(--text-color);
-      text-align: center;
-      position: relative;
-    }
-    .section-title::after {
-      content: '';
-      width: 50px;
-      height: 4px;
-      background: var(--primary-color);
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: -10px;
-    }
-
-    .grid {
-      display: grid;
-      gap: 24px;
-    }
-    .projects-grid {
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-    .card {
-      background: var(--card-bg);
+    header img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
       border-radius: 12px;
-      box-shadow: 0 4px 16px var(--card-shadow);
-      padding: 18px;
-      transition: transform 0.3s ease;
+      display: block;
+      background: #020617;
+    }
+
+    header h1 { font-size: 3rem; font-weight: 700; }
+    header h1 span { color: #020617; }
+    header p { margin-top: 12px; font-size: 1.1rem; color: #020617; }
+    nav { margin-top: 25px; }
+    nav a { margin: 0 15px; font-weight: 600; color: #020617; }
+
+    /* ===== Sections ===== */
+    section { padding: 90px 10%; position: relative; }
+    .section-title { font-size: 2rem; margin-bottom: 40px; text-align: center; }
+
+    /* ===== Glassmorphism Cards ===== */
+    .skills-grid, .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+    .card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
     .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 6px 20px var(--card-shadow);
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 16px 40px rgba(34,211,238,0.25);
     }
-    .card h3 { font-size: 1.25rem; color: var(--primary-color); margin-bottom: 6px; }
-    .card a { text-decoration: none; color: var(--primary-color); font-weight: 500; }
+    .card h3 { color: #22d3ee; margin-bottom: 8px; }
 
-    footer {
-      text-align: center;
-      padding: 28px 10%;
-      background: var(--card-bg);
-      color: var(--text-color);
-      font-size: 0.9rem;
-      position: relative;
-    }
+    /* ===== Footer ===== */
+    footer { background: #020617; padding: 40px 10%; text-align: center; }
+    footer p { color: #9ca3af; }
 
-    /* Social icons fixed */
-    .social-icons {
+    .btn { display: inline-block; margin-top: 20px; padding: 12px 32px; background: #22d3ee; color: #020617; border-radius: 30px; font-weight: 600; }
+
+    /* ===== Particles Canvas ===== */
+    #particles {
       position: fixed;
-      top: 40%;
-      right: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      background: var(--card-bg);
-      padding: 12px 8px;
-      border-radius: 8px 0 0 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      z-index: 1000;
+      inset: 0;
+      z-index: -1;
     }
-    .social-icons a {
-      color: var(--primary-color);
-      font-size: 1.5rem;
-      transition: 0.3s ease;
-    }
-    .social-icons a:hover { transform: scale(1.2); }
 
-    /* Responsive */
-    @media (max-width: 768px){
-      header img { width: 120px; height: 120px; }
-      .social-icons { top: auto; bottom: 10px; flex-direction: row; right: 50%; transform: translateX(50%); border-radius: 12px; padding: 8px 12px;}
-      .social-icons a { font-size: 1.3rem; }
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.4rem; }
+      header p { font-size: 1rem; }
     }
   </style>
 </head>
-
-<body data-theme="light">
+<body>
+<canvas id="particles"></canvas>
 
 <header>
-  <img src="harshal_profile.jpg" alt="Harshal Saudagar">
-  <h1>Harshal Saudagar</h1>
+  <div class="profile-wrapper">
+    <img src="harshal_profile.jpg" alt="Harshal Saudagar">
+  </div>
+  <h1>Harshal <span>Saudagar</span></h1>
   <p>AI & Data Analyst | Generative AI | Data-Driven Decision Making</p>
-
   <nav>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
     <a href="#experience">Experience</a>
-    <a href="#certificates">Certificates</a>
     <a href="#contact">Contact</a>
   </nav>
-
-  <span class="theme-toggle" onclick="toggleTheme()" title="Toggle Light/Dark">
-    <i class="fas fa-adjust"></i>
-  </span>
-  
-  <a class="hero-btn" href="Harshal_Saudagar_Resume.pdf" download>Download Resume</a>
 </header>
 
-<!-- Social Icons -->
-<div class="social-icons">
-  <a href="https://www.linkedin.com/in/harshal-saudagar-a03973290" target="_blank"><i class="fab fa-linkedin"></i></a>
-  <a href="https://github.com/harshalgit2005" target="_blank"><i class="fab fa-github"></i></a>
-  <a href="mailto:harshalsaudagar864@gmail.com"><i class="fas fa-envelope"></i></a>
-</div>
-
-<section id="about">
+<section id="about" class="about">
   <h2 class="section-title">About Me</h2>
-  <p style="max-width: 760px; margin:auto; text-align:center;">
-    I am an IT undergraduate passionate about Data Analytics, Machine Learning, and Generative AI.
-    I build intelligent systems, insights, and predictive models that drive business decisions.
+  <p>
+    I am an Information Technology undergraduate passionate about Data Analytics, Machine Learning, and Generative AI.
+    I enjoy solving real-world problems using data, building intelligent systems, and creating insights that drive
+    business decisions. I focus on ethical, scalable, and impactful AI solutions.
   </p>
 </section>
 
 <section id="skills">
   <h2 class="section-title">Skills</h2>
-  <div class="grid projects-grid">
+  <div class="skills-grid">
     <div class="card">Python, SQL, Pandas, NumPy</div>
     <div class="card">Machine Learning & Scikit-learn</div>
     <div class="card">Generative AI & RAG</div>
@@ -229,20 +129,20 @@
 
 <section id="projects">
   <h2 class="section-title">Projects</h2>
-  <div class="grid projects-grid">
+  <div class="projects-grid">
     <div class="card">
       <h3>Face Detection using OpenCV</h3>
-      <p>Real-time face detection system using Haar Cascade & DNN.</p>
+      <p>Built a real-time face detection system using Haar Cascade and DNN-based models.</p>
       <a href="https://github.com/harshalgit2005/computer-vision-techniques" target="_blank">View Project →</a>
     </div>
     <div class="card">
       <h3>RAG Chatbot</h3>
-      <p>AI assistant built with Retrieval-Augmented Generation & Streamlit.</p>
+      <p>Document-based AI assistant using Retrieval-Augmented Generation and Streamlit.</p>
       <a href="https://github.com/harshalgit2005/RAG-chatbot" target="_blank">View Project →</a>
     </div>
     <div class="card">
       <h3>Consumer Shopping Behavior Analysis</h3>
-      <p>Retail analytics with Python, SQL & Power BI dashboard.</p>
+      <p>Retail analytics project with Python, SQL, and Power BI dashboards.</p>
       <a href="https://github.com/harshalgit2005/Data-Analysis" target="_blank">View Project →</a>
     </div>
   </div>
@@ -250,65 +150,60 @@
 
 <section id="experience">
   <h2 class="section-title">Experience</h2>
-  <div style="max-width: 780px; margin:auto;">
-    <div class="card">
-      <h3>AI Transformation Consultant (Simulation)</h3>
-      <p><strong>TATA Group – Forage</strong> | Jul 2025<br>
-      Designed AI-driven analytics solutions and predictive models with ethical standards.</p>
-    </div>
-    <div class="card">
-      <h3>Data Analyst Intern</h3>
-      <p><strong>YBI Foundation</strong> | Dec 2024 – Jan 2025<br>
-      Built dashboards, reports, ML models, and automated ETL workflows.</p>
-    </div>
+  <div class="experience-item">
+    <h3>AI Transformation Consultant (Simulation)</h3>
+    <p><strong>TATA Group – Forage</strong> | Jul 2025</p>
+    <p>Designed AI-driven analytics strategies, applied predictive modeling, and incorporated ethical AI principles.</p>
   </div>
-</section>
-
-<section id="certificates">
-  <h2 class="section-title">Certificates</h2>
-  <div class="grid projects-grid">
-    <div class="card">
-      <h3>Data Science with Python</h3>
-      <p><a href="certificate_datascience.pdf" download>Download Certificate →</a></p>
-    </div>
-    <div class="card">
-      <h3>Machine Learning Certification</h3>
-      <p><a href="certificate_ml.pdf" download>Download Certificate →</a></p>
-    </div>
+  <div class="experience-item">
+    <h3>Data Analyst Intern</h3>
+    <p><strong>YBI Foundation</strong> | Dec 2024 – Jan 2025</p>
+    <p>Worked on large datasets, built Power BI dashboards, implemented ML models, and automated ETL workflows.</p>
   </div>
 </section>
 
 <section id="contact">
   <h2 class="section-title">Contact</h2>
-  <p style="text-align:center;">
-    Email: <a href="mailto:harshalsaudagar864@gmail.com">harshalsaudagar864@gmail.com</a><br>
-    LinkedIn: <a href="https://www.linkedin.com/in/harshal-saudagar-a03973290" target="_blank">View Profile</a><br>
-    GitHub: <a href="https://github.com/harshalgit2005" target="_blank">View Repositories</a>
-  </p>
+  <p>Email: harshalsaudagar864@gmail.com</p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/harshal-saudagar-a03973290" target="_blank">View Profile</a></p>
+  <p>GitHub: <a href="https://github.com/harshalgit2005" target="_blank">View Repositories</a></p>
+  <a class="btn" href="#">Download Resume</a>
 </section>
 
 <footer>
-  © 2026 Harshal Saudagar — Built for Impact & Innovation
+  <p>© 2026 Harshal Saudagar. Built with ❤️ & Data.</p>
 </footer>
 
 <script>
-  // Light/Dark mode toggle
-  function toggleTheme() {
-    const html = document.body;
-    html.setAttribute('data-theme', html.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
-  }
+/* ===== Simple AI-style background particles ===== */
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let w, h;
+function resize(){ w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+window.addEventListener('resize', resize); resize();
 
-  // Scroll animations
-  const sections = document.querySelectorAll('section');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('visible');
-      }
-    });
-  }, {threshold: 0.2});
-  sections.forEach(section => observer.observe(section));
+const particles = Array.from({length: 80}, () => ({
+  x: Math.random()*w,
+  y: Math.random()*h,
+  r: Math.random()*2+1,
+  vx: (Math.random()-0.5)*0.6,
+  vy: (Math.random()-0.5)*0.6
+}));
+
+function animate(){
+  ctx.clearRect(0,0,w,h);
+  particles.forEach(p => {
+    p.x += p.vx; p.y += p.vy;
+    if(p.x<0||p.x>w) p.vx*=-1;
+    if(p.y<0||p.y>h) p.vy*=-1;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle = 'rgba(34,211,238,0.6)';
+    ctx.fill();
+  });
+  requestAnimationFrame(animate);
+}
+animate();
 </script>
-
 </body>
 </html>
